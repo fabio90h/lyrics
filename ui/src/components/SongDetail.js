@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+
 
 import fetchSongDetails from '../queries/fetchSongDetails'
 
@@ -13,7 +14,8 @@ const SongDetail = () => {
 
     return(
         <div>
-            {data.song.title}
+            <Link to="/">Back</Link>
+            <h3>{data.song.title}</h3>
         </div>
     )
 }
