@@ -21,7 +21,7 @@ function SongList(){
         return data.songs.map(({title, id}) => {
             return(
                 <li key={id} className="collection-item">
-                    {title}
+                    <Link to={`/songs/${id}`}>{title}</Link>
                     <i 
                         className="material-icons right" 
                         onClick={() =>  deleteSong({variables: { id }})}
