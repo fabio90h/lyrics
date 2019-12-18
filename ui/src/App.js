@@ -4,6 +4,7 @@ import './App.css';
 
 import SongList from './components/SongList'
 import AddSong from './components/AddSong'
+import SongDetail from './components/SongDetail'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           </Route>
           <Route path="/songs/new">
             <AddSong/>
+          </Route>
+          <Route path="/songs/:id">
+            <SongDetail/>
           </Route>
         </Switch>
       </Router>
