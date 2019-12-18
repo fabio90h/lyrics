@@ -2,7 +2,7 @@ import { gql } from 'apollo-boost'
 
 export default gql`
     query SongDetails($id: ID!){
-        songDetails(id: $id){
+        song(id: $id){
             id
             title
         }
