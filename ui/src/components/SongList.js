@@ -3,8 +3,10 @@ import { gql } from 'apollo-boost'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { Link } from 'react-router-dom'
 
+import fetchSongs from '../queries/fetchSongs'
+
 function SongList(){
-    const {loading, error, data, refetch} = useQuery(query)
+    const {loading, error, data, refetch} = useQuery(fetchSongs)
     const [deleteSong] = useMutation(mutation) 
 
     useEffect(() => {
@@ -53,15 +55,6 @@ const mutation = gql`
     mutation DeleteSong($id: ID){
         deleteSong(id: $id){
             id
-        }
-    }
-`
-
-const query = gql`
-    {
-        songs{
-            id
-            title
         }
     }
 `

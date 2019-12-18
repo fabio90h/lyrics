@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { Link, useHistory} from 'react-router-dom'
 
-//
 const AddSong = () => {
     const [songTitle, setSongTitle] = useState('')
     const [addSongTitle, {loading, error}] = useMutation(mutation)
