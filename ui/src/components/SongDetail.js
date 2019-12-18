@@ -2,8 +2,8 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { useParams, Link } from 'react-router-dom'
 
-
 import fetchSongDetails from '../queries/fetchSongDetails'
+import LyricCreate from './LyricCreate'
 
 const SongDetail = () => {
     const {id} = useParams()
@@ -16,6 +16,7 @@ const SongDetail = () => {
         <div>
             <Link to="/">Back</Link>
             <h3>{data.song.title}</h3>
+            <LyricCreate id={id}/>
         </div>
     )
 }
