@@ -35,6 +35,7 @@ function SongList(){
 
     return (
         <div>
+            <h3>Song List</h3>
             <ul class="collection">
                 {displaySongs()}
             </ul>
