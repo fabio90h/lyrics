@@ -6,13 +6,15 @@ const bodyParser = require('body-parser');
 const schema = require('./schema/schema');
 const cors = require('cors')
 
-const {dbPass, dbUserName} = require('./keys')
+//Import Path library to make file path easier
+const path = require('path')
+
+const keys = require('./config/keys')
 
 
 const app = express();
 
-// Replace with your mongoLab URI
-const MONGO_URI = `mongodb://${dbUserName}:${dbPass}@ds253388.mlab.com:53388/lyricalfh`;
+const MONGO_URI = keys.mongoURI;
 if (!MONGO_URI) {
   throw new Error('You must provide a MongoLab URI');
 }
@@ -30,6 +32,17 @@ app.use('/graphql', expressGraphQL({
   graphiql: true
 }));
 
-app.listen(4000, () => {
+//Set a static folder. This will create a new middleware 
+//function to serve files from within a given root
+app.use(express.static('public'))
+
+//All path except for "/graphql" will be redirect to the public folder
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
+
+//Make PORT dynamic to either local or production
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => {
   console.log('Listening');
 });
